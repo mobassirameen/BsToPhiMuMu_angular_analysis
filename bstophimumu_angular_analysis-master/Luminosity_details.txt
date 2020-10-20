@@ -1,0 +1,279 @@
+
+
+
+Dataset:
+
+MC:
+2016:>>>>>>>>
+Signal:
+/BsToMuMuPhi_BMuonFilter_SoftQCDnonD_TuneCUEP8M1_13TeV-pythia8-evtgen/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM
+/BsToMuMuPhi_BMuonFilter_SoftQCDnonD_TuneCUEP8M1_13TeV-pythia8-evtgen/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM
+JpsiPhi:
+/BsToJpsiPhi_BMuonFilter_SoftQCDnonD_TuneCUEP8M1_13TeV-pythia8-evtgen/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM
+PsiPhi:
+/BsToPsiPhi_BMuonFilter_SoftQCDnonD_TuneCUEP8M1_13TeV-pythia8-evtgen/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM
+
+
+2017:>>>>>>>
+
+/BsToMuMuPhi_BMuonFilter_SoftQCDnonD_TuneCP5_13TeV-pythia8-evtgen/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v3/MINIAODSIM
+
+/BsToPsiPhi_BMuonFilter_SoftQCDnonD_TuneCP5_13TeV-pythia8-evtgen/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM
+
+/BsToJpsiPhi_BMuonFilter_SoftQCDnonD_TuneCP5_13TeV-pythia8-evtgen/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM
+
+2018:>>>>>>>>
+
+/BsToMuMuPhi_BMuonFilter_SoftQCDnonD_TuneCP5_13TeV-pythia8-evtgen/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM
+/BsToPsiPhi_BMuonFilter_SoftQCDnonD_TuneCP5_13TeV-pythia8-evtgen/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM
+/BsToJpsiPhi_BMuonFilter_SoftQCDnonD_TuneCP5_13TeV-pythia8-evtgen/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM
+
+
+BsToPsiPhi, 2016:>>>>>>>
+
+------------------------------------
+
+                Number of events in MINIAODSIM dataset
+MC Luminosity = --------------------------------------------------------------------
+                Pyhtia P-P cross section * filter efficiency * Branching fraction
+
+No.of events in MINIAODSIM dataset = *******
+Pythia P-P cross section after filter = 1.68 * 10^-4 *5.679 * 10^10 pb
+Branching Fraction(B.F) for Bs->PsiPhi = (5.4+/-0.6) *10^-4
+B.F for Phi->K+K- = (49.2+/-0.5) %
+B.F for Psi->Mu^+Mu^- = (8.0+/-0.6)*10-3
+Total BF = 2.1254400e-06
+
+Luminosity of BsToPsiPhi MC sample  = 1753.62 fb^-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+BsToJpsiPhi, 2016:>>>>>
+
+------------------------------------
+------------------------------------
+
+                Number of events in MINIAODSIM dataset
+MC Luminosity = --------------------------------------------------------------------
+   	      	Pyhtia P-P cross section * filter efficiency * Branching fraction
+
+No.of events in MINIAODSIM dataset = 65542414
+Pythia P-P cross section after filter = 0.007*7.94 * 10^8 pb
+Branching Fraction(B.F) for Bs->JpsiPhi = (1.08+/-0.008) *10^-3
+B.F for Phi->K+K- = (49.2+/-0.5) %
+B.F for J/Psi->Mu^+Mu^- = (5.961+/-0.033)%
+Total BF = 3.1669056e-05
+
+Luminosity of BsToJpsiPhi MC sample  = 539.325 fb^-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+BsToMuMuPhi, 2016:>>>>>
+BPH-RunIIFall17GS-00114
+V1:
+
+                Number of events in MINIAODSIM dataset
+MC Luminosity = --------------------------------------------------------------------
+   	      	Pyhtia P-P cross section * filter efficiency * Branching fraction
+
+No.of events in MINIAODSIM dataset = *********
+Pythia P-P cross section after filter = 1.16 * 10^-4 * 5.679 * 10^10 pb
+Branching Fraction(B.F) for Bs->MuMuPhi = (8.2+/-1.2) *10^-7
+B.F for Phi->K+K- = (49.2+-0.5) %
+Total BF:= 4.0344000e-07
+
+Luminosity of BsToMuMuPhi MC sample  = 33078.2720 fb^-1
+
+V2:
+
+No.of events in MINIAODSIM dataset = *********
+Pythia P-P cross section after filter = 1.16 * 10^-4 * 5.679 * 10^10 pb
+Branching Fraction(B.F) for Bs->MuMuPhi = (8.2+/-1.2) *10^-7
+B.F for Phi->K+K- = (49.2+-0.5) %
+Total BF:= 4.0344000e-07
+
+Luminosity of BsToMuMuPhi MC sample  = 33148.2881 fb^-1
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+BsToPsiPhi, 2017:>>>>>
+
+BPH-RunIIFall17GS-00116
+GenXsecAnalyzer:
+------------------------------------
+Before Filter: total cross section = 5.551e+10 +- 3.927e+02 pb
+Filter efficiency (taking into account weights)= (13) / (100000) = 1.300e-04 +- 3.605e-05
+Filter efficiency (event-level)= (13) / (100000) = 1.300e-04 +- 3.605e-05    [TO BE USED IN MCM]
+
+After filter: final cross section = 7.216e+06 +- 2.001e+06 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 1.386e-04 +- 5.326e-09
+------------------------------------
+
+                Number of events in MINIAODSIM dataset
+MC Luminosity = --------------------------------------------------------------------
+   	      	Pyhtia P-P cross section * filter efficiency * Branching fraction
+
+No.of events in MINIAODSIM dataset = 42802262
+Pythia P-P cross section after filter = 7.216e+06 pb
+Branching Fraction(B.F) for Bs->PsiPhi = (5.4+/-0.6) *10^-4
+B.F for Phi->K+K- = (49.2+/-0.5) %
+B.F for Psi->Mu^+Mu^- = (8.0+/-0.6)*10-3
+Total BF = 2.1254400e-06
+
+Luminosity of BsToPsiPhi MC sample  = 2790.7527 fb^-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+BsToJpsiPhi, 2017:>>>>>
+BPH-RunIIFall17GS-00073
+------------------------------------
+Before Filter: total cross section = 5.505e+08 +- 6.802e+06 pb
+Filter efficiency (taking into account weights)= (45) / (6485) = 6.939e-03 +- 1.031e-03
+Filter efficiency (event-level)= (45) / (6485) = 6.939e-03 +- 1.031e-03    [TO BE USED IN MCM]
+
+After filter: final cross section = 3.820e+06 +- 5.695e+05 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 2.618e-04 +- 1.021e-08
+------------------------------------
+
+                Number of events in MINIAODSIM dataset
+MC Luminosity = --------------------------------------------------------------------
+   	      	Pyhtia P-P cross section * filter efficiency * Branching fraction
+
+No.of events in MINIAODSIM dataset = 65542414
+Pythia P-P cross section after filter = 3.820e+06 pb
+Branching Fraction(B.F) for Bs->JpsiPhi = (1.08+/-0.008) *10^-3
+B.F for Phi->K+K- = (49.2+/-0.5) %
+B.F for J/Psi->Mu^+Mu^- = (5.961+/-0.033)%
+Total BF = 3.1669056e-05
+
+Luminosity of BsToJpsiPhi MC sample  = 541.781 fb^-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+BsToMuMuPhi, 2017:>>>>>
+BPH-RunIIFall17GS-00114
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+Before Filter: total cross section = 5.521e+08 +- 5.494e+06 pb
+Filter efficiency (taking into account weights)= (102) / (10000) = 1.020e-02 +- 1.005e-03
+Filter efficiency (event-level)= (102) / (10000) = 1.020e-02 +- 1.005e-03    [TO BE USED IN MCM]
+
+After filter: final cross section = 5.631e+06 +- 5.576e+05 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 1.776e-04 +- 3.122e-09
+-------------------------------------
+
+
+                Number of events in MINIAODSIM dataset
+MC Luminosity = --------------------------------------------------------------------
+   	      	Pyhtia P-P cross section * filter efficiency * Branching fraction
+
+No.of events in MINIAODSIM dataset = 82074881
+Pythia P-P cross section after filter = 5.631e+06 pb
+Branching Fraction(B.F) for Bs->MuMuPhi = (8.2+/-1.2) *10^-7
+B.F for Phi->K+K- = (49.2+-0.5) %
+Total BF:= 4.0344000e-07
+
+Luminosity of BsToMuMuPhi MC sample  = 36128.155 fb^-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+2018:
+BsToJpsiPhi, 2018:>>>>>
+
+BPH-RunIIFall18GS-00135
+
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+Before Filter: total cross section = 5.592e+08 +- 6.634e+06 pb
+Filter efficiency (taking into account weights)= (78) / (7033) = 1.109e-02 +- 1.249e-03
+Filter efficiency (event-level)= (78) / (7033) = 1.109e-02 +- 1.249e-03    [TO BE USED IN MCM]
+
+After filter: final cross section = 6.201e+06 +- 7.021e+05 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 1.613e-04 +- 2.944e-09
+
+------------------------------------
+
+                Number of events in MINIAODSIM dataset
+MC Luminosity = --------------------------------------------------------------------
+   	      	Pyhtia P-P cross section * filter efficiency * Branching fraction
+
+No.of events in MINIAODSIM dataset = 72881301
+Pythia P-P cross section after filter = 6.201e+06 pb
+Branching Fraction(B.F) for Bs->JpsiPhi = (1.08+/-0.008) *10^-3
+B.F for Phi->K+K- = (49.2+/-0.5) %
+B.F for J/Psi->Mu^+Mu^- = (5.961+/-0.033)%
+Total BF = 3.1669056e-05
+
+Luminosity of BsToJpsiPhi MC sample  =  371.124 fb^-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+BsToMuMuPhi, 2018:>>>>>
+
+BPH-RunIIFall18GS-00134
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+Before Filter: total cross section = 5.463e+08 +- 4.398e+06 pb
+Filter efficiency (taking into account weights)= (164) / (15278) = 1.073e-02 +- 8.337e-04
+Filter efficiency (event-level)= (164) / (15278) = 1.073e-02 +- 8.337e-04    [TO BE USED IN MCM]
+
+After filter: final cross section = 5.864e+06 +- 4.579e+05 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 1.705e-04 +- 2.271e-09
+-----------------------------------
+
+                Number of events in MINIAODSIM dataset
+MC Luminosity = --------------------------------------------------------------------
+   	      	Pyhtia P-P cross section * filter efficiency * Branching fraction
+
+No.of events in MINIAODSIM dataset = 63871721
+Pythia P-P cross section after filter = 5.864e+06 pb
+Branching Fraction(B.F) for Bs->MuMuPhi = (8.2+/-1.2) *10^-7
+B.F for Phi->K+K- = (49.2+-0.5) %
+Total BF:= 4.0344000e-07
+
+Luminosity of BsToJpsiPhi MC sample  = 26998.255 fb^-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+BsToPsiPhi, 2018:>>>>>
+
+BPH-RunIIFall18GS-00136
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+Before Filter: total cross section = 5.535e+08 +- 4.930e+06 pb
+Filter efficiency (taking into account weights)= (163) / (12477) = 1.306e-02 +- 1.017e-03
+Filter efficiency (event-level)= (163) / (12477) = 1.306e-02 +- 1.017e-03    [TO BE USED IN MCM]
+
+After filter: final cross section = 7.231e+06 +- 5.663e+05 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 1.383e-04 +- 1.498e-09
+
+-------------------------------------
+
+                Number of events in MINIAODSIM dataset
+MC Luminosity = --------------------------------------------------------------------
+   	      	Pyhtia P-P cross section * filter efficiency * Branching fraction
+
+No.of events in MINIAODSIM dataset = 42115859
+Pythia P-P cross section after filter = 7.231e+06 pb
+Branching Fraction(B.F) for Bs->PsiPhi = (5.4+/-0.6) *10^-4
+B.F for Phi->K+K- = (49.2+/-0.5) %
+B.F for Psi->Mu^+Mu^- = (8.0+/-0.6)*10-3
+Total BF = 2.1254400e-06
+
+
+Luminosity of BsToJpsiPhi MC sample  = 2740.302 fb^-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%BOB

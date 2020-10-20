@@ -14,26 +14,25 @@ typedef struct
   //  float Kppt_;
   //float Kmaxtrkdcasigbs_;
   //  float Kptrkdcasigbs_;
-  
-  float Max_Kpt_;
-  float Max_MuMinIPsig_ ;
-  float Max_MinIPsig_ ;
-  float Max_DCA_ ;
-  //float Max_Mpt_;
-  //float Max_trk_;
-  //float Max_K_MinIP_;
+  float KmtrkMinIPSig_;  
+  float KptrkMinIPSig_;  
+  /* float Max_Kpt_; */
+  /* float Max_Mpt_; */
+  /* float Max_trk_; */
+  /* //float Max_K_MinIP_; */
+  float BsIsot_;
+  float Bsdcasigbs_;
   float Bcosalphabs2d_;
-  float Blxysig_;
   float Bvtxcl_;
-  float Bpt_ ;
-  float Bsdcasigbs_ ; 
-  //float Blxysig_;
-  float Phimass_ ;
-  float BsIso_ ;
-  float K_Iso_ ;
-  float bmass_;
-  float mumumass_;
-  float mumumasserr_;
+  float Blxysig_;
+  float Phimass_;
+  /* float bmass_; */
+  /* float mumumass_; */
+  /* float mumumasserr_; */
+  /* float kmpt_; */
+  /* float kppt_; */
+  /* float kmtkdca_; */
+  /* float kptkdca_; */
   
 
 }  InputVariables;

@@ -51,14 +51,6 @@ public :
   vector<double>   *tri_dr1;
   vector<double>   *tri_dpt0;
   vector<double>   *tri_dpt1;
-  
-  vector<int>   *tri_LMNTk_dr0;
-  vector<int>   *tri_PsipTk_dr0;
-  vector<int>   *tri_JpsiTk_dr0;
-  vector<int>   *tri_LMNTk_dr1;
-  vector<int>   *tri_PsipTk_dr1;
-  vector<int>   *tri_JpsiTk_dr1;
-  
   vector<double>  *mumdcabs;
   vector<double>  *mumdcabserr;
   vector<double>  *mumpx;
@@ -98,19 +90,11 @@ public :
   vector<double>  *kptrkMinIP2DE;
   vector<double>  *kmtrkMinIP2D;
   vector<double>  *kmtrkMinIP2DE;
-  vector<vector<double> > * mupIso ;
-  vector<vector<double> > * mumIso ;
-  vector<double > * mupIso_M ;
-  vector<double > * mumIso_M ;
+
   vector<vector<double> > * mupIsoPt ;
   vector<vector<double> > * mumIsoPt ;
   vector<vector<double> > * mupIsodR ;
   vector<vector<double> > * mumIsodR ;
-
-  vector<vector<double> > * kptrkIso ;
-  vector<vector<double> > * kmtrkIso ;
-  vector<double > * trkmIso_M ;
-  vector<double > * trkpIso_M ;
   vector<vector<double> > * kptrkIsoPt ;
   vector<vector<double> > * kmtrkIsoPt ;
   vector<vector<double> > * kptrkIsodR ;
@@ -125,6 +109,8 @@ public :
   
   vector<bool>    *mumisgoodmuon;
   vector<bool>    *mupisgoodmuon;
+  //vector<bool>    *mumloosemuon;
+  // vector<bool>    *muploosemuon;
   vector<int>     *mumnpixhits;
   vector<int>     *mupnpixhits;
   vector<int>     *mumnpixlayers;
@@ -236,13 +222,6 @@ public :
   TBranch        *b_tri_JpsiTk;
   TBranch        *b_tri_PsipTk;
   TBranch        *b_tri_LMNTk;
-  TBranch        *b_tri_JpsiTk_dr0;
-  TBranch        *b_tri_JpsiTk_dr1;
-  TBranch        *b_tri_PsipTk_dr0;
-  TBranch        *b_tri_PsipTk_dr1;
-  TBranch        *b_tri_LMNTk_dr0;
-  TBranch        *b_tri_LMNTk_dr1;
-  
   
   TBranch        *b_mumdcabs;   //!
   TBranch        *b_mumdcabserr;   //!
@@ -266,6 +245,9 @@ public :
   TBranch        *b_mumumasserr;   //!
   TBranch        *b_mumisgoodmuon;   //!
   TBranch        *b_mupisgoodmuon;   //!
+  //TBranch        *b_mumloosemuon;   //!
+  //TBranch        *b_muploosemuon;   //!
+
   TBranch        *b_mumMinIP;
   TBranch        *b_mupMinIP;
   TBranch        *b_mumMinIPE;
@@ -284,19 +266,10 @@ public :
   TBranch        *b_kptrkMinIP2DE;
   TBranch        *b_kmtrkMinIP2D;
   TBranch        *b_kmtrkMinIP2DE;
-  TBranch        * b_mupIso ;
-  TBranch        * b_mumIso ;
-  TBranch        * b_mupIso_M ;
-  TBranch        * b_mumIso_M ;
   TBranch        * b_mupIsoPt ;
   TBranch        * b_mumIsoPt ;
   TBranch        * b_mupIsodR ;
   TBranch        * b_mumIsodR ;
-
-  TBranch        * b_kptrkIso ;
-  TBranch        * b_kmtrkIso ;
-  TBranch        * b_trkmIso_M ;
-  TBranch        * b_trkpIso_M ;
   TBranch        * b_kptrkIsoPt ;
   TBranch        * b_kmtrkIsoPt ;
   TBranch        * b_kptrkIsodR ;
@@ -464,14 +437,6 @@ void SingleBsToPhiMuMuSelector::Init(TTree *tree)
    tri_dpt0 = 0;
    tri_dpt1 = 0;
 
-   tri_JpsiTk_dr0 =0;
-   tri_PsipTk_dr0 =0;
-   tri_LMNTk_dr0 =0;
-
-   tri_JpsiTk_dr1 =0;
-   tri_PsipTk_dr1 =0;
-   tri_LMNTk_dr1 =0;
-
 
    mumdcabs = 0;
    mumdcabserr = 0;
@@ -495,6 +460,8 @@ void SingleBsToPhiMuMuSelector::Init(TTree *tree)
    mumumasserr = 0;
    mumisgoodmuon = 0;
    mupisgoodmuon = 0;
+   //mumloosemuon = 0;
+   //muploosemuon = 0;
    mumMinIP = 0;
    mupMinIP = 0;
    mumMinIPE = 0;
@@ -514,19 +481,11 @@ void SingleBsToPhiMuMuSelector::Init(TTree *tree)
    kptrkMinIP2DE = 0;
    kmtrkMinIP2D = 0;
    kmtrkMinIP2DE = 0;
-   mupIso = NULL;
-   mumIso = NULL;
-   mupIso_M = 0;
-   mumIso_M = 0;
+
    mupIsoPt = NULL;
    mumIsoPt = NULL;
    mupIsodR = NULL;
    mumIsodR = NULL;
-   
-   kptrkIso = NULL;
-   kmtrkIso = NULL;
-   trkmIso_M = 0;
-   trkpIso_M = 0;
    kptrkIsoPt = NULL;
    kmtrkIsoPt = NULL;
    kptrkIsodR = NULL;
@@ -628,13 +587,6 @@ void SingleBsToPhiMuMuSelector::Init(TTree *tree)
    fChain->SetBranchAddress("tri_dpt0",&tri_dpt0, &b_tri_dpt0);
    fChain->SetBranchAddress("tri_dpt1",&tri_dpt1, &b_tri_dpt1);
 
-   fChain->SetBranchAddress("tri_JpsiTk_dr0",&tri_JpsiTk_dr0, &b_tri_JpsiTk_dr0);
-   fChain->SetBranchAddress("tri_PsipTk_dr0",&tri_PsipTk_dr0, &b_tri_PsipTk_dr0);
-   fChain->SetBranchAddress("tri_LMNTk_dr0",&tri_LMNTk_dr0, &b_tri_LMNTk_dr0);
-   fChain->SetBranchAddress("tri_JpsiTk_dr1",&tri_JpsiTk_dr1, &b_tri_JpsiTk_dr1);
-   fChain->SetBranchAddress("tri_PsipTk_dr1",&tri_PsipTk_dr1, &b_tri_PsipTk_dr1);
-   fChain->SetBranchAddress("tri_LMNTk_dr1",&tri_LMNTk_dr1, &b_tri_LMNTk_dr1);
-
    fChain->SetBranchAddress("mumdcabs", &mumdcabs, &b_mumdcabs);
    fChain->SetBranchAddress("mumdcabserr", &mumdcabserr, &b_mumdcabserr);
    fChain->SetBranchAddress("mumpx", &mumpx, &b_mumpx);
@@ -657,6 +609,8 @@ void SingleBsToPhiMuMuSelector::Init(TTree *tree)
    fChain->SetBranchAddress("mumumasserr", &mumumasserr, &b_mumumasserr);
    fChain->SetBranchAddress("mumisgoodmuon", &mumisgoodmuon, &b_mumisgoodmuon);
    fChain->SetBranchAddress("mupisgoodmuon", &mupisgoodmuon, &b_mupisgoodmuon);
+   //fChain->SetBranchAddress("mumloosemuon", &mumloosemuon, &b_mumloosemuon);
+   //fChain->SetBranchAddress("muploosemuon", &muploosemuon, &b_muploosemuon);
    fChain->SetBranchAddress("mumMinIP",&mumMinIP,&b_mumMinIP);
    fChain->SetBranchAddress("mupMinIP",&mupMinIP, &b_mupMinIP);
    fChain->SetBranchAddress("mumMinIPE", &mumMinIPE, &b_mumMinIPE);
@@ -675,18 +629,11 @@ void SingleBsToPhiMuMuSelector::Init(TTree *tree)
    fChain->SetBranchAddress("kptrkMinIP2DE", &kptrkMinIP2DE, &b_kptrkMinIP2DE);
    fChain->SetBranchAddress("kmtrkMinIP2D", &kmtrkMinIP2D, &b_kmtrkMinIP2D);
    fChain->SetBranchAddress("kmtrkMinIP2DE", &kmtrkMinIP2DE, &b_kmtrkMinIP2DE);
-   fChain->SetBranchAddress("mupIso",&mupIso, &b_mupIso);
-   fChain->SetBranchAddress("mumIso",&mumIso, &b_mumIso);
-   fChain->SetBranchAddress("mupIso_M",&mupIso_M, &b_mupIso_M);
-   fChain->SetBranchAddress("mumIso_M",&mumIso_M, &b_mumIso_M);
+
    fChain->SetBranchAddress("mupIsoPt",&mupIsoPt, &b_mupIsoPt);
    fChain->SetBranchAddress("mumIsoPt",&mumIsoPt, &b_mumIsoPt);
    fChain->SetBranchAddress("mupIsodR",&mupIsodR, &b_mupIsodR);
    fChain->SetBranchAddress("mumIsodR",&mumIsodR, &b_mumIsodR);
-   fChain->SetBranchAddress("kptrkIso",&kptrkIso, &b_kptrkIso);
-   fChain->SetBranchAddress("kmtrkIso",&kmtrkIso, &b_kmtrkIso);
-   fChain->SetBranchAddress("trkpIso_M",&trkpIso_M, &b_trkpIso_M);
-   fChain->SetBranchAddress("trkmIso_M",&trkmIso_M, &b_trkmIso_M);
 
    fChain->SetBranchAddress("kptrkIsoPt",&kptrkIsoPt, &b_kptrkIsoPt);
    fChain->SetBranchAddress("kmtrkIsoPt",&kmtrkIsoPt, &b_kmtrkIsoPt);

@@ -108,7 +108,16 @@ double LBhtptmass        = 0;
 
 double Lltmass         = 0;
 double LBltmass        = 0;
+double Bmass_kmu1      = 0;
+double Bmass_kmu2      = 0;
+double Bmass_kk1_s     = 0;
+double Bmass_kk2_s     = 0;
+double Bmass_mumu1_s     = 0;
+double Bmass_mumu2_s     = 0;
 
+double Bmass_kkmumu    = 0;
+double Bmass_kk_s      = 0;
+double Bmass_mumu_s    = 0;
 
  
 double Bpt            = 0;
@@ -169,12 +178,6 @@ int    Triggers       = 0;
 int    JpsiTriggers       = 0;
 int    PsiPTriggers       = 0;
 int    LMNTTriggers       = 0;
-int    JpsiTriggersdr0    = 0;
-int    PsiPTriggersdr0    = 0;
-int    LMNTTriggersdr0    = 0;
-int    JpsiTriggersdr1    = 0;
-int    PsiPTriggersdr1    = 0;
-int    LMNTTriggersdr1    =0;
 
 int    goodMuon       = 0;
 int    goodPresel     = 0;
@@ -283,7 +286,16 @@ void ClearEvent()
   LBhtptmass        = 0;
   Lltmass         = 0;
   LBltmass        = 0;
- 
+  Bmass_kmu1       = 0;
+  Bmass_kmu2       = 0;
+  Bmass_kkmumu     = 0;
+  Bmass_kk_s       = 0;
+  Bmass_mumu_s     = 0;
+  Bmass_kk1_s      = 0;
+  Bmass_mumu1_s      = 0;
+  Bmass_kk2_s      = 0;
+  Bmass_mumu2_s      = 0;
+
   Bpt            = 0;
   Beta           = 0;
   Bphi           = 0;
@@ -314,12 +326,6 @@ void ClearEvent()
   JpsiTriggers       = 0;
   PsiPTriggers       = 0;
   LMNTTriggers       = 0;
-  JpsiTriggersdr0    = 0;
-  PsiPTriggersdr0    = 0;
-  LMNTTriggersdr0    = 0;
-  JpsiTriggersdr1    = 0;
-  PsiPTriggersdr1    = 0;
-  LMNTTriggersdr1    = 0;
 
   goodMuon       = 0;
   goodPresel     = 0;
@@ -495,7 +501,19 @@ void SingleBsToPhiMuMuSelector::SlaveBegin(TTree * /*tree*/)
   tree_->Branch("Lhtptmass", &Lhtptmass, "Lhtptmass/D");
   tree_->Branch("Lpihtmass", &Lpihtmass, "Lpihtmass/D");
   tree_->Branch("LBpihtmass", &LBpihtmass, "LBpihtmass/D");
-  
+
+  tree_->Branch("Bmass_kmu1", &Bmass_kmu1, "Bmass_kmu1/D");
+  tree_->Branch("Bmass_kmu2", &Bmass_kmu2, "Bmass_kmu2/D");
+  tree_->Branch("Bmass_kkmumu", &Bmass_kkmumu, "Bmass_kkmumu/D");
+
+  tree_->Branch("Bmass_kk1_s", &Bmass_kk1_s, "Bmass_kk1_s/D");
+  tree_->Branch("Bmass_mumu1_s", &Bmass_mumu1_s, "Bmass_mumu1_s/D");
+  tree_->Branch("Bmass_kk2_s", &Bmass_kk2_s, "Bmass_kk2_s/D");
+  tree_->Branch("Bmass_mumu2_s", &Bmass_mumu2_s, "Bmass_mumu2_s/D");
+
+  tree_->Branch("Bmass_kk_s", &Bmass_kk_s, "Bmass_kk_s/D");
+  tree_->Branch("Bmass_mumu_s", &Bmass_mumu_s, "Bmass_mumu_s/D");
+
   tree_->Branch("Bpt"           , &Bpt           , "Bpt/D");
   tree_->Branch("Beta"          , &Beta          , "Beta/D");
   tree_->Branch("Bphi"          , &Bphi          , "Bphi/D");
@@ -526,12 +544,6 @@ void SingleBsToPhiMuMuSelector::SlaveBegin(TTree * /*tree*/)
   tree_->Branch("JpsiTriggers"      , &JpsiTriggers      , "JpsiTriggers/I");
   tree_->Branch("PsiPTriggers"      , &PsiPTriggers      , "PsiPTriggers/I");
   tree_->Branch("LMNTTriggers"      , &LMNTTriggers      , "LMNTTriggers/I");
-  tree_->Branch("JpsiTriggersdr0"      , &JpsiTriggersdr0   , "JpsiTriggersdr0/I");
-  tree_->Branch("PsiPTriggersdr0"      , &PsiPTriggersdr0   , "PsiPTriggersdr0/I");
-  tree_->Branch("LMNTTriggersdr0"      , &LMNTTriggersdr0   , "LMNTTriggersdr0/I");
-  tree_->Branch("JpsiTriggersdr1"      , &JpsiTriggersdr1   , "JpsiTriggersdr1/I");
-  tree_->Branch("PsiPTriggersdr1"      , &PsiPTriggersdr1   , "PsiPTriggersdr1/I");
-  tree_->Branch("LMNTTriggersdr1"      , &LMNTTriggersdr1   , "LMNTTriggersdr1/I");
 
   tree_->Branch("goodMuon"      , &goodMuon      , "goodMuon/I");
   tree_->Branch("goddPresel"    , &goodPresel    , "goodPresel/I");
@@ -698,7 +710,7 @@ Bool_t SingleBsToPhiMuMuSelector::Process(Long64_t entry)
   string cut = get_option_value(option, "cut"); 
   string spec_data = get_option_value(option, "spec_data");
   GetEntry(entry); 
-  if(entry%100000==0)std::cout << "Processing "<<entry<<" entries"<< std::endl;
+  if(entry%100000==0)std::cout << "Processing "<<entry<<" entries"<<" Run "<<run<<" event "<<event<< std::endl;
   n_processed_ += 1; 
   Nb = nb; 
   Npv = nprivtx;
@@ -814,21 +826,10 @@ int SingleBsToPhiMuMuSelector::SelectB(string cut)
       
       double Kmpt_t = float(sqrt( ((kmpx->at(i))*(kmpx->at(i))) + ((kmpy->at(i))*(kmpy->at(i))) ));
       double Kppt_t = float(sqrt( ((kppx->at(i))*(kppx->at(i))) + ((kppy->at(i))*(kppy->at(i))) ));
-     
-      //double Mumpt_t = float(sqrt( ((mumpx->at(i))*(mumpx->at(i))) + ((mumpy->at(i))*(mumpy->at(i))) ));
-      //double Muppt_t = float(sqrt( ((muppx->at(i))*(muppx->at(i))) + ((muppy->at(i))*(muppy->at(i))) ));
+      double Mumpt_t = float(sqrt( ((mumpx->at(i))*(mumpx->at(i))) + ((mumpy->at(i))*(mumpy->at(i))) ));
+      double Muppt_t = float(sqrt( ((muppx->at(i))*(muppx->at(i))) + ((muppy->at(i))*(muppy->at(i))) ));
       double Kmtrkdcasigbs_t = float((kmtrkdcabs->at(i)/kmtrkdcabserr->at(i)));
       double Kptrkdcasigbs_t = float((kptrkdcabs->at(i)/kptrkdcabserr->at(i)));
-
-      double MumMinIP_t = mumMinIP->at(i);
-      double MupMinIP_t = mupMinIP->at(i); 
-      double MumMinIPE_t = mumMinIPE->at(i);
-      double MupMinIPE_t = mupMinIPE->at(i);
-
-      double KmtrkMinIP_t = kmtrkMinIP->at(i);
-      double KmtrkMinIPE_t = kmtrkMinIPE->at(i);
-      double KptrkMinIPE_t = kptrkMinIPE->at(i);
-      double KptrkMinIP_t = kptrkMinIP->at(i);
       //double KptrkMinIP_t = float(KptrkMinIP, KmtrkMinIP);
       float sumBmpt_ =0;
       for(unsigned int kl=0; kl<bmassIsodR->at(i).size();kl++){
@@ -841,43 +842,18 @@ int SingleBsToPhiMuMuSelector::SelectB(string cut)
       double   Bpt_m = B_4vec_m.Pt();
       double BsIso_m = Bpt_m/(sumBmpt_ + Bpt_m);
 
-      float sumkppt_ =0;
-  for(unsigned int kl=0; kl<kptrkIsodR->at(i).size();kl++){
-    if(kptrkIsodR->at(i).at(kl)<0.5){
-      sumkppt_ += kptrkIsoPt->at(i).at(kl);
-    }
-  }
-      double KptrkIso_ = rawTrkppt->at(i)/(sumkppt_ + rawTrkppt->at(i));
-
-      float sumkmpt_ =0;
-  for(unsigned int kl=0; kl<kmtrkIsodR->at(i).size();kl++){
-    if(kmtrkIsodR->at(i).at(kl)<0.5){
-      sumkmpt_ += kmtrkIsoPt->at(i).at(kl);
-    }
-  }
-     double KmtrkIso_ = rawTrkmpt->at(i)/(sumkmpt_ + rawTrkmpt->at(i));
-
-
-
       // varList.Kminpt_=TMath::Min(Kmpt_t, Kppt_t);
 
-      varList.Max_Kpt_           = TMath::Max(Kmpt_t, Kppt_t);
-      varList.Max_MuMinIPsig_    = TMath::Max(MumMinIP_t/MumMinIPE_t, MupMinIP_t/MupMinIPE_t);
-      varList.Max_MinIPsig_      = TMath::Max(KmtrkMinIP_t/KmtrkMinIPE_t, KptrkMinIP_t/KptrkMinIPE_t);
-      varList.Max_DCA_       	 = TMath::Max(Kmtrkdcasigbs_t, Kptrkdcasigbs_t); 
-      varList.Bcosalphabs2d_	 = float(bcosalphabs2d->at(i));
-      varList.Blxysig_      	 = float((blsbs->at(i)/blsbserr->at(i)));
-      varList.Bvtxcl_       	 = float(bvtxcl->at(i));
-      varList.Bpt_          	 = Bpt_m;
-      varList.Bsdcasigbs_   	 = fabs( bdcabs->at(i)/bdcabserr->at(i) );  
-      varList.Phimass_      	 = phimass->at(i);
-      varList.BsIso_             = BsIso_m;
-      varList.K_Iso_         	 = TMath::Max(KmtrkIso_, KptrkIso_);
 
-      //spectator variables
-      varList.bmass_         = bmass->at(i);
-      varList.mumumass_      = mumumass->at(i);
-      varList.mumumasserr_   = mumumasserr->at(i);
+      varList.KmtrkMinIPSig_= kmtrkMinIP->at(i)/kmtrkMinIPE->at(i);
+      varList.KptrkMinIPSig_= kptrkMinIP->at(i)/kptrkMinIPE->at(i);
+      varList.Phimass_ = phimass->at(i);
+      varList.BsIsot_= BsIso_m;
+      varList.Bsdcasigbs_= fabs( bdcabs->at(i)/bdcabserr->at(i) );
+      varList.Bcosalphabs2d_ = float(bcosalphabs2d->at(i));
+      varList.Blxysig_ = float((blsbs->at(i)/blsbserr->at(i)));
+      varList.Bvtxcl_ = float(bvtxcl->at(i));
+      
 
       // varList.Max_Kpt_ = TMath::Max(Kmpt_t, Kppt_t); 
       // varList.Max_trk_ = TMath::Max(Kmtrkdcasigbs_t, Kptrkdcasigbs_t);  
@@ -890,7 +866,7 @@ int SingleBsToPhiMuMuSelector::SelectB(string cut)
       // varList.kppt_ = Kppt_t;
       // varList.kmtkdca_ = Kmtrkdcasigbs_t;
       // varList.kptkdca_ = Kptrkdcasigbs_t;
-      if(kmtrkMinIP->at(i)/kmtrkMinIPE->at(i) >0  && kptrkMinIP->at(i)/kptrkMinIPE->at(i) >0  && BsIso_m>0 && fabs( bdcabs->at(i)/bdcabserr->at(i))>0 && mumMinIP->at(i)/mumMinIPE->at(i)>0 && mupMinIP->at(i)/mupMinIPE->at(i)>0){
+      if(kmtrkMinIP->at(i)/kmtrkMinIPE->at(i) >0  && kptrkMinIP->at(i)/kptrkMinIPE->at(i) >0  && BsIso_m>0 && fabs( bdcabs->at(i)/bdcabserr->at(i))>0){
 	  double mvareader = -99.0;
 	  mvareader=mvAna_->evaluate(mvAlgo_, varList);
 	  //cout<<"BDT: "<<mvareader<<endl;
@@ -956,6 +932,10 @@ bool SingleBsToPhiMuMuSelector::HasGoodDimuon(int i)
       && fabs(mupdxyvtx->at(i)) < 0.3 
       && fabs(mumdzvtx->at(i)) < 20    
       && fabs(mupdzvtx->at(i)) < 20   
+      
+      //&& mumloosemuon->at(i)
+      //&& muploosemuon->at(i)
+
        ) return true; 
   return false; 
 }//}}}
@@ -966,7 +946,7 @@ bool SingleBsToPhiMuMuSelector::HasGoodPreselection(int i)
   double kmpt = sqrt( (kmpx->at(i))*(kmpx->at(i)) + (kmpy->at(i))*(kmpy->at(i)) );
   double kppt = sqrt( (kppx->at(i))*(kppx->at(i)) + (kppy->at(i))*(kppy->at(i)) );
 
-  if ( bcosalphabs2d->at(i)>0.9 && bvtxcl->at(i)>0.01 && (fabs(kmtrkdcabs->at(i)/kmtrkdcabserr->at(i))>2.0) && (fabs(kptrkdcabs->at(i)/kptrkdcabserr->at(i))>2.0) && kmpt>1.2 && kppt>1.2) return true;
+  if ( bcosalphabs2d->at(i)>0.9 && bvtxcl->at(i)>0.01 && (fabs(kmtrkdcabs->at(i)/kmtrkdcabserr->at(i))>0.8) && (fabs(kptrkdcabs->at(i)/kptrkdcabserr->at(i))>0.8) && kmpt>0.8 && kppt>0.8) return true;
 
   return false;
 }//}}}        
@@ -1028,6 +1008,27 @@ void SingleBsToPhiMuMuSelector::SaveEvent(int i, string spec)
   LB_4vec = Mup_4vec1 + Mum_4vec1 + pp_4vecl + Km_4vecl;
   LBs_4vec = Mup_4vec1 + Mum_4vec1 + pm_4vecl + Kp_4vecl;
 
+  TLorentzVector Bs1_4vec, Bs2_4vec,Mup_S_4vec1, Mum_S_4vec1, Km_S_4vec1,  Kp_S_4vec1;
+  Mup_S_4vec1.SetXYZM(muppx->at(i),muppy->at(i),muppz->at(i),KAON_MASS);
+  Mum_S_4vec1.SetXYZM(mumpx->at(i),mumpy->at(i),mumpz->at(i),KAON_MASS);
+  Km_S_4vec1.SetXYZM(kmpx->at(i),kmpy->at(i),kmpz->at(i),MUON_MASS);
+  Kp_S_4vec1.SetXYZM(kppx->at(i),kppy->at(i),kppz->at(i),MUON_MASS);
+
+  Bs1_4vec = Mup_4vec1+Mum_S_4vec1+Kp_4vec1+Km_S_4vec1;
+  Bs2_4vec = Mup_S_4vec1+Mum_4vec1+Kp_S_4vec1+Km_4vec1;
+
+  TLorentzVector Bs3_4vec= Mup_S_4vec1 +Mum_S_4vec1+Kp_S_4vec1+Km_S_4vec1;
+  Bmass_kmu1 = Bs1_4vec.M();
+  Bmass_kmu2 = Bs2_4vec.M();
+  Bmass_kkmumu = Bs3_4vec.M();
+  Bmass_mumu_s = (Mup_S_4vec1 +Mum_S_4vec1).M();
+  Bmass_kk_s = (Kp_S_4vec1+Km_S_4vec1).M();
+
+  Bmass_kk1_s = (Kp_4vec1+Mum_S_4vec1).M();
+  Bmass_kk2_s = (Mup_S_4vec1+Km_4vec1).M();
+  Bmass_mumu1_s = (Kp_S_4vec1+Mum_4vec1).M();
+  Bmass_mumu2_s = (Km_S_4vec1+Mup_4vec1).M();
+  
   TLorentzVector L_4vec, Kst0_4vecl, Kst_4vecl , Ls_4vec;
 
   L_4vec = pp_4vecl + Km_4vecl;
@@ -1302,17 +1303,6 @@ void SingleBsToPhiMuMuSelector::SaveEvent(int i, string spec)
   dpt0 = tri_dpt0->at(i);
   dpt1 = tri_dpt1->at(i);
   
-  JpsiTriggersdr0 = tri_JpsiTk_dr0->at(i);
-  JpsiTriggersdr1 = tri_JpsiTk_dr1->at(i);
- 
-  PsiPTriggersdr0 = tri_PsipTk_dr0->at(i);
-  PsiPTriggersdr1 = tri_PsipTk_dr1->at(i);
-
-  LMNTTriggersdr0 = tri_LMNTk_dr0->at(i);
-  LMNTTriggersdr1 = tri_LMNTk_dr1->at(i);
-
-
-  //std::cout<<"mupiso "<< mupIso->at(i).size()<<" mumiso "<<mumIso->at(i).size()<<" mupIsoPt "<<mupIsoPt->at(i).size()<<" mumIsoPt "<<mumIsoPt->at(i).size()<<std::endl;
   double sumppt =0;
   for(unsigned int kl=0; kl<mupIsodR->at(i).size();kl++){
     if(mupIsodR->at(i).at(kl)<0.5){
@@ -1601,7 +1591,7 @@ int main(int argc, char** argv) {
   //   printf("WARNING: You must specify #entries(-n) and start run(-s) for datatype '%s'.\n",datatype.Data());
   //   return -1;
   // }
-    
+  std::cout<<"entries "<<nentries<<" start "<<iStart<<std::endl;
   ch->Process("SingleBsToPhiMuMuSelector.cc+", option, nentries, iStart); 
 
   gSystem->Exit(0);

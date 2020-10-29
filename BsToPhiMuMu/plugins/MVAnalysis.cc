@@ -19,10 +19,10 @@ MVAnalysis::MVAnalysis(const string& mva_algo)//, const string& xmlfile)
   // reader_->AddVariable( "Max_DCA := TMath::Max(Kmtrkdcasigbs,Kptrkdcasigbs)",&varList_.Max_trk_);
   // reader_->AddVariable( "Max_Mpt := TMath::Max(Mumpt,Muppt)", &varList_.Max_Mpt_);
   //reader_->AddVariable( "Max_K_MinIP := TMath::Max(KmtrkMinIP,KptrkMinIP)", &varList_.Max_K_MinIP_);
-  reader_->AddVariable( "Max_Kpt", &varList_.Max_Kpt_);
-  reader_->AddVariable( "Max_MuMinIPsig", &varList_.Max_MuMinIPsig_);
-  reader_->AddVariable( "Max_MinIPsig", &varList_.Max_MinIPsig_);
-  reader_->AddVariable( "Max_DCA", &varList_.Max_DCA_);
+  reader_->AddVariable( "Max_Kpt := TMath::Max(Kmpt, Kppt)", &varList_.Max_Kpt_);
+  reader_->AddVariable( "Max_MuMinIPsig := TMath::Max(MumMinIP/MumMinIPE, MupMinIP/MupMinIPE)", &varList_.Max_MuMinIPsig_);
+  reader_->AddVariable( "Max_MinIPsig := TMath::Max(KmtrkMinIP/KmtrkMinIPE, KptrkMinIP/KptrkMinIPE)", &varList_.Max_MinIPsig_);
+  reader_->AddVariable( "Max_DCA := TMath::Max(Kmtrkdcasigbs, Kptrkdcasigbs)", &varList_.Max_DCA_);
   reader_->AddVariable( "Bcosalphabs2d", &varList_.Bcosalphabs2d_);
   reader_->AddVariable( "Blxysig", &varList_.Blxysig_);  
   reader_->AddVariable( "Bvtxcl", &varList_.Bvtxcl_);
@@ -30,7 +30,7 @@ MVAnalysis::MVAnalysis(const string& mva_algo)//, const string& xmlfile)
   reader_->AddVariable( "Bsdcasigbs",&varList_.Bsdcasigbs_);
   reader_->AddVariable( "Phimass", &varList_.Phimass_);
   reader_->AddVariable( "BsIso",&varList_.BsIso_);
-  reader_->AddVariable( "K_Iso", &varList_.K_Iso_);
+  reader_->AddVariable( "K_Iso := TMath::Max(kmtrkIso, kptrkIso)", &varList_.K_Iso_);
 
    reader_->AddSpectator( "Bmass", &varList_.Bmass_);
    reader_->AddSpectator( "Mumumass", &varList_.Mumumass_);

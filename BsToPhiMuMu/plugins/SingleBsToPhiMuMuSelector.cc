@@ -826,10 +826,21 @@ int SingleBsToPhiMuMuSelector::SelectB(string cut)
       
       double Kmpt_t = float(sqrt( ((kmpx->at(i))*(kmpx->at(i))) + ((kmpy->at(i))*(kmpy->at(i))) ));
       double Kppt_t = float(sqrt( ((kppx->at(i))*(kppx->at(i))) + ((kppy->at(i))*(kppy->at(i))) ));
-      double Mumpt_t = float(sqrt( ((mumpx->at(i))*(mumpx->at(i))) + ((mumpy->at(i))*(mumpy->at(i))) ));
-      double Muppt_t = float(sqrt( ((muppx->at(i))*(muppx->at(i))) + ((muppy->at(i))*(muppy->at(i))) ));
+      //double Mumpt_t = float(sqrt( ((mumpx->at(i))*(mumpx->at(i))) + ((mumpy->at(i))*(mumpy->at(i))) ));
+      //double Muppt_t = float(sqrt( ((muppx->at(i))*(muppx->at(i))) + ((muppy->at(i))*(muppy->at(i))) ));
       double Kmtrkdcasigbs_t = float((kmtrkdcabs->at(i)/kmtrkdcabserr->at(i)));
       double Kptrkdcasigbs_t = float((kptrkdcabs->at(i)/kptrkdcabserr->at(i)));
+
+      double MumMinIP_t = mumMinIP->at(i);
+      double MupMinIP_t = mupMinIP->at(i);
+      double MumMinIPE_t = mumMinIPE->at(i);
+      double MupMinIPE_t = mupMinIPE->at(i);
+
+      double KmtrkMinIP_t = kmtrkMinIP->at(i);
+      double KmtrkMinIPE_t = kmtrkMinIPE->at(i);
+      double KptrkMinIPE_t = kptrkMinIPE->at(i);
+      double KptrkMinIP_t = kptrkMinIP->at(i);
+
       //double KptrkMinIP_t = float(KptrkMinIP, KmtrkMinIP);
       float sumBmpt_ =0;
       for(unsigned int kl=0; kl<bmassIsodR->at(i).size();kl++){
@@ -842,19 +853,40 @@ int SingleBsToPhiMuMuSelector::SelectB(string cut)
       double   Bpt_m = B_4vec_m.Pt();
       double BsIso_m = Bpt_m/(sumBmpt_ + Bpt_m);
 
-      // varList.Kminpt_=TMath::Min(Kmpt_t, Kppt_t);
+      float sumkppt_ =0;
+  for(unsigned int kl=0; kl<kptrkIsodR->at(i).size();kl++){
+    if(kptrkIsodR->at(i).at(kl)<0.5){
+      sumkppt_ += kptrkIsoPt->at(i).at(kl);
+    }
+  }
+     double KptrkIso_ = rawTrkppt->at(i)/(sumkppt_ + rawTrkppt->at(i));
 
+     float sumkmpt_ =0;
+  for(unsigned int kl=0; kl<kmtrkIsodR->at(i).size();kl++){
+    if(kmtrkIsodR->at(i).at(kl)<0.5){
+      sumkmpt_ += kmtrkIsoPt->at(i).at(kl);
+    }
+  }
+     double KmtrkIso_ = rawTrkmpt->at(i)/(sumkmpt_ + rawTrkmpt->at(i));
 
-      varList.KmtrkMinIPSig_= kmtrkMinIP->at(i)/kmtrkMinIPE->at(i);
-      varList.KptrkMinIPSig_= kptrkMinIP->at(i)/kptrkMinIPE->at(i);
-      varList.Phimass_ = phimass->at(i);
-      varList.BsIsot_= BsIso_m;
-      varList.Bsdcasigbs_= fabs( bdcabs->at(i)/bdcabserr->at(i) );
+      varList.Max_Kpt_ = TMath::Max(Kmpt_t, Kppt_t);
+      varList.Max_MuMinIPsig_ = TMath::Max(MumMinIP_t/MumMinIPE_t, MupMinIP_t/MupMinIPE_t);
+      varList.Max_MinIPsig_  = TMath::Max(KmtrkMinIP_t/KmtrkMinIPE_t, KptrkMinIP_t/KptrkMinIPE_t);
+      varList.Max_DCA_ = TMath::Max(Kmtrkdcasigbs_t, Kptrkdcasigbs_t);
       varList.Bcosalphabs2d_ = float(bcosalphabs2d->at(i));
-      varList.Blxysig_ = float((blsbs->at(i)/blsbserr->at(i)));
+      varList.Blxysig_  = float((blsbs->at(i)/blsbserr->at(i)));
       varList.Bvtxcl_ = float(bvtxcl->at(i));
-      
+      varList.Bpt_  = Bpt_m;
+      varList.Bsdcasigbs_= fabs( bdcabs->at(i)/bdcabserr->at(i) );
+      varList.Phimass_ = phimass->at(i);
+      varList.BsIso_= BsIso_m;
+      varList.K_Iso_         	 = TMath::Max(KmtrkIso_, KptrkIso_);
 
+      //spectator variable
+      varList.Bmass_         = bmass->at(i);
+      varList.Mumumass_      = mumumass->at(i);
+      varList.Mumumasserr_   = mumumasserr->at(i);
+      
       // varList.Max_Kpt_ = TMath::Max(Kmpt_t, Kppt_t); 
       // varList.Max_trk_ = TMath::Max(Kmtrkdcasigbs_t, Kptrkdcasigbs_t);  
       // varList.Max_Mpt_ = TMath::Max(Mumpt_t, Muppt_t); 

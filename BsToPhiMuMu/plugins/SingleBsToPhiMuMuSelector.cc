@@ -791,8 +791,8 @@ void SingleBsToPhiMuMuSelector::Terminate()
   printf("total events = %i\n", n_total_);
   printf("#evts passsing muonID = %i\n", n_passMuonID_);
   printf("muonID efficiency = %i/%i = %.2f  \n", n_passMuonID_, n_total_, 100*float(n_passMuonID_)/float(n_total_));
-  printf("#evts passing selection cuts = %i\n", n_passSelCut_);
-  printf("#cands/evt = %i/%i = %.2f \n", n_passSelCut_, n_total_, 100*float(n_passSelCut_)/float(n_total_));
+  //printf("#evts passing selection cuts = %i\n", n_passSelCut_);
+  //printf("#cands/evt = %i/%i = %.2f \n", n_passSelCut_, n_total_, 100*float(n_passSelCut_)/float(n_total_));
   printf("#evts passing best B sel = %i \n", n_passBestB_);
   printf("sel. efficiency = %i/%i = %.2f  \n", n_selected_, n_processed_, 100*float(n_selected_)/float(n_processed_));
 
@@ -915,6 +915,7 @@ int SingleBsToPhiMuMuSelector::SelectB(string cut)
     }else if (cut == "cutopt") {
       
       for (int i = 0; i< nb; i++) {
+      n_total_++;
 
       if ( ! HasGoodDimuon(i) ) continue;
       n_passMuonID_++;
@@ -925,6 +926,7 @@ int SingleBsToPhiMuMuSelector::SelectB(string cut)
       if (bvtxcl->at(i) > best_bvtxcl) {
 	best_bvtxcl = bvtxcl->at(i);
 	n_passBestB_++;
+	n_passBestB_bkg++;
         best_idx = i;
       }
     }

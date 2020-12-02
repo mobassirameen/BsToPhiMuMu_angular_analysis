@@ -920,8 +920,8 @@ int SingleBsToPhiMuMuSelector::SelectB(string cut)
       if ( ! HasGoodDimuon(i) ) continue;
       n_passMuonID_++;
 
-      //if ( !( sqrt( ((kmpx->at(i))*(kmpx->at(i))) + ((kmpy->at(i))*(kmpy->at(i))) ) > 0.8 && sqrt( ((kppx->at(i))*(kppx->at(i))) + ((kppy->at(i))*(kppy->at(i))) ) > 0.8 && (kmtrkdcabs->at(i)/kmtrkdcabserr->at(i)) >0.8 && (kptrkdcabs->at(i)/kptrkdcabserr->at(i)) > 0.8 && (blsbs->at(i)/blsbserr->at(i)) > 8.5 && bcosalphabs2d->at(i) > 0.9992 && bvtxcl->at(i) > 0.01  )  )  continue;
-      //n_passSelCut_++;
+      if ( HasGoodPreselection(i) ) goodPresel = 1;
+      if ( ! HasGoodPreselection(i) ) continue;
 
       if (bvtxcl->at(i) > best_bvtxcl) {
 	best_bvtxcl = bvtxcl->at(i);

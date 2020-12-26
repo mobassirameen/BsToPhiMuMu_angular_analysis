@@ -28,7 +28,7 @@ MVAnalysis::MVAnalysis(const string& mva_algo)//, const string& xmlfile)
   reader_->AddVariable( "Bvtxcl", &varList_.Bvtxcl_);
   reader_->AddVariable( "Bpt", &varList_.Bpt_);
   reader_->AddVariable( "Bsdcasigbs",&varList_.Bsdcasigbs_);
-  reader_->AddVariable( "Phimass", &varList_.Phimass_);
+//  reader_->AddVariable( "Phimass", &varList_.Phimass_);
   reader_->AddVariable( "BsIso",&varList_.BsIso_);
   reader_->AddVariable( "K_Iso := TMath::Max(kmtrkIso, kptrkIso)", &varList_.K_Iso_);
 

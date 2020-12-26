@@ -878,7 +878,7 @@ int SingleBsToPhiMuMuSelector::SelectB(string cut)
       varList.Bvtxcl_ = float(bvtxcl->at(i));
       varList.Bpt_  = Bpt_m;
       varList.Bsdcasigbs_= fabs( bdcabs->at(i)/bdcabserr->at(i) );
-      varList.Phimass_ = phimass->at(i);
+   //   varList.Phimass_ = phimass->at(i);
       varList.BsIso_= BsIso_m;
       varList.K_Iso_         	 = TMath::Max(KmtrkIso_, KptrkIso_);
 

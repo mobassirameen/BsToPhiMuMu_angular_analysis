@@ -2,7 +2,7 @@
 
 
 declare -i nfiles
-nfiles=(32946617/2000000)+1
+nfiles=(35243900/2000000)+1
 echo "nfiles = $nfiles"
 
 
@@ -12,8 +12,8 @@ echo -e "\n=> processing singlecand ntuple for Bs2psipphi sample."
 
 for ((num=1;num<=$nfiles;num++))
 do
- echo -e "\n./sel mc.lite cut_bdt /eos/user/r/rraturi/BsToPhiMuMu/DataBase/IsoVar/2016/MC/BsToMuMuPhi-PsiMC_2016MINI_Iso.root sel_BsToPsiPhi_OfficialMC_signal_2016 -s $((2000000*$((num-1))))  -n 2000000"
- ./sel mc.lite mc cut_bdt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/BsToMuMuPhi-PsiMC_2016MINI_Iso.root BsToPsiPhi_OfficialMC_signal_2016 -s $((2000000*$((num-1))))  -n 2000000
+ #echo -e "\n./sel mc.lite cut_bdt /eos/user/r/rraturi/BsToPhiMuMu/DataBase/IsoVar/2016/MC/uPhi-PsiMC_2016MINI_Iso.root sel_BsToPsiPhi_OfficialMC_signal_2016 -s $((2000000*$((num-1))))  -n 2000000"
+ ./sel mc.lite mc cut_bdt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/BsToMuMuPhi-PsiMC_2016MINI_Correction_Iso.root BsToPsiPhi_OfficialMC_signal_2016 -s $((2000000*$((num-1))))  -n 2000000
  echo -e "\n==> file$num is done."
  echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 done

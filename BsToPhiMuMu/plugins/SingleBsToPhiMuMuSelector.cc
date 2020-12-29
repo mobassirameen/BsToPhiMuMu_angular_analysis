@@ -85,6 +85,9 @@ double Mumphi           = 0;
 double Mupphi           = 0;
 double Mumdcasigbs  = 0;
 double Mupdcasigbs  = 0;
+double dimuvtxcl    = 0;
+double dimulsig     = 0;
+double dimucosalphabs = 0;
 
 
 double Bmass           = 0;
@@ -241,6 +244,9 @@ void ClearEvent()
   Mupeta           = 0;
   Mumphi           = 0;
   Mupphi           = 0;
+  dimuvtxcl        = 0;
+  dimulsig         = 0;
+  dimucosalphabs   = 0;
 
   Mumdcasigbs      = 0;
   Mupdcasigbs      = 0;
@@ -531,6 +537,9 @@ void SingleBsToPhiMuMuSelector::SlaveBegin(TTree * /*tree*/)
   tree_->Branch("Q2"            , &Q2            , "Q2/D");
   tree_->Branch("dimupt"        , &dimupt        , "dimupt/D");
   tree_->Branch("dimueta"       , &dimueta       , "dimueta/D");
+  tree_->Branch("dimuvtxcl"     , &dimuvtxcl     , "dimuvtxcl/D" );
+  tree_->Branch("dimulsig"      , &dimulsig      , "dimulsig/D");
+  tree_->Branch("dimucosalphabs", &dimucosalphabs, "dimucosalphabs/D");
   tree_->Branch("CosThetaL"     , &CosThetaL     , "CosThetaL/D");
   tree_->Branch("CosThetaK"     , &CosThetaK     , "CosThetaK/D");
   tree_->Branch("Phi"           , &Phi           , "Phi/D");
@@ -1170,6 +1179,9 @@ void SingleBsToPhiMuMuSelector::SaveEvent(int i, string spec)
   Mupdcasigbs = fabs( mupdcabs->at(i)/mupdcabserr->at(i) ); 
   Bsdcasigbs  = fabs( bdcabs->at(i)/bdcabserr->at(i) );
   Q2 = pow(mumumass->at(i),2);
+  dimuvtxcl = mumuvtxcl->at(i);
+  dimulsig  = (mumulsbs->at(i))/(mumulsbserr->at(i));
+  dimucosalphabs = mumucosalphabs->at(i);
 
   buff1 = B_4vec;
   buff2 = Mup_4vec+Mum_4vec;

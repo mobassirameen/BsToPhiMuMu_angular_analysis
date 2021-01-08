@@ -745,8 +745,8 @@ Bool_t SingleBsToPhiMuMuSelector::Process(Long64_t entry)
     if (datatype != "data") gentree_->Fill();    
     int i = SelectB(cut);
     if ( i != -1 ) n_passBestB_++;
-    //if ( i != -1 && (datatype == "data" || datatype=="mc.lite")){//for background
-    if ( i != -1 && (datatype == "data" || istruebs->at(i))){
+    if ( i != -1 && (datatype == "data" || datatype=="mc.lite")){//for background
+//    if ( i != -1 && (datatype == "data" || istruebs->at(i))){
       n_selected_ += 1;      
       SaveEvent(i, spec_data);
       //SaveRecoGen(i);

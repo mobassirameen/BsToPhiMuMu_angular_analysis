@@ -68,6 +68,8 @@ int    Npv            = 0;
 double Mumumass       = 0;
 double Mumumasserr    = 0;
 double Phimass        = 0;
+double PMmass	      = 0;
+double PPmass         = 0;
 double Kmpt           = 0;
 double Kppt           = 0;
 double Kmeta          = 0;
@@ -226,6 +228,8 @@ void ClearEvent()
   Mumumass       = 0;
   Mumumasserr    = 0;
   Phimass        = 0;
+  PMmass         = 0;
+  PPmass  	 = 0;
   Kmpt           = 0;
   Kppt           = 0;
   Kmeta           = 0;
@@ -441,6 +445,8 @@ void SingleBsToPhiMuMuSelector::SlaveBegin(TTree * /*tree*/)
   tree_->Branch("Mumumass"      , &Mumumass      , "Mumumass/D");
   tree_->Branch("Mumumasserr"   , &Mumumasserr   , "Mumumasserr/D");
   tree_->Branch("Phimass"       , &Phimass       , "Phimass/D");
+  tree_->Branch("PMmass"        , &PMmass        , "PMmass/D");
+  tree_->Branch("PPmass"        , &PPmass        , "PPmass/D");
   tree_->Branch("Kmpt"          , &Kmpt          , "Kmpt/D");
   tree_->Branch("Kppt"          , &Kppt          , "Kppt/D");
   tree_->Branch("Kmeta"          , &Kmeta          , "Kmeta/D");
@@ -745,8 +751,8 @@ Bool_t SingleBsToPhiMuMuSelector::Process(Long64_t entry)
     if (datatype != "data") gentree_->Fill();    
     int i = SelectB(cut);
     if ( i != -1 ) n_passBestB_++;
-    if ( i != -1 && (datatype == "data" || datatype=="mc.lite")){//for background
-//    if ( i != -1 && (datatype == "data" || istruebs->at(i))){
+ //   if ( i != -1 && (datatype == "data" || datatype=="mc.lite")){//for background
+    if ( i != -1 && (datatype == "data" || istruebs->at(i))){
       n_selected_ += 1;      
       SaveEvent(i, spec_data);
       //SaveRecoGen(i);
@@ -988,13 +994,17 @@ bool SingleBsToPhiMuMuSelector::HasGoodPreselection(int i)
 void SingleBsToPhiMuMuSelector::SaveEvent(int i, string spec)
 {//{{{
 
-  TLorentzVector B_4vec, Phi_4vec, Mup_4vec, Mum_4vec, Km_4vec, Kp_4vec, buff1, buff2, buff3;
+  TLorentzVector B_4vec, Phi_4vec, Mup_4vec, Mum_4vec, Km_4vec, Kp_4vec, buff1, buff2, buff3, phimum, phimup;
   B_4vec.SetXYZM(bpx->at(i),bpy->at(i),bpz->at(i),bmass->at(i));
   Phi_4vec.SetXYZM(kmpx->at(i)+kppx->at(i),kmpy->at(i)+kppy->at(i),kmpz->at(i)+kppz->at(i),phimass->at(i));
   Mup_4vec.SetXYZM(muppx->at(i),muppy->at(i),muppz->at(i),MUON_MASS);
   Mum_4vec.SetXYZM(mumpx->at(i),mumpy->at(i),mumpz->at(i),MUON_MASS);
   Km_4vec.SetXYZM(kmpx->at(i),kmpy->at(i),kmpz->at(i),KAON_MASS);
   Kp_4vec.SetXYZM(kppx->at(i),kppy->at(i),kppz->at(i),KAON_MASS);
+
+
+  PMmass = (Phi_4vec+Mum_4vec).M();
+  PPmass = (Phi_4vec+Mup_4vec).M();
 
   Bmass = bmass->at(i); 
   Bvtxcl = bvtxcl->at(i); 
@@ -1581,18 +1591,18 @@ int main(int argc, char** argv) {
   TString datatype = argv[1]; 
   TString spec_data    = argv[2]; 
   TString cut      = argv[3]; 
-  TString infile   = argv[4]; 
-  TString outfile  = argv[5]; 
+  //TString infile   = argv[4]; 
+  TString outfile  = argv[4]; 
 
   Printf("datatype: '%s'", datatype.Data());
   Printf("On which data: '%s'", spec_data.Data());
   Printf("cut: '%s'", cut.Data());
-  Printf("input file: '%s'", infile.Data());
+  //Printf("input file: '%s'", infile.Data());
   Printf("output file: '%s'", outfile.Data());
 
   ///TChain *ch = new TChain("ntuple/tree"); 
   TChain *ch = new TChain("tree"); 
-  ch->Add(infile.Data()); 
+  ch->Add("/eos/home-c/ckar/BSTOPHIMUMU/FileForGroup/crab_jpsiphi2017/BsToPhiMuMu_2017_JpsiPhi_Mini_*"); 
 
   char *j = get_option(argv, argv+argc, "-j");
   if (j) {

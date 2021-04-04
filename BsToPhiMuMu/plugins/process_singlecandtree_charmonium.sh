@@ -14,9 +14,9 @@ echo -e "\n=> processing singlecand ntuple for Bs2phimm sample."
 #./sel data DoubleMuonLowMass cut_bdt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/DoubleMuonLowMass_2016G_MINI_Correction_Iso.root  DoubleMuonLowMass_2016G_Mini_Iso -s 0  -n 100000
 #./sel data DoubleMuonLowMass cut_bdt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/DoubleMuonLowMass_2016H_MINI_Correction_Iso.root  DoubleMuonLowMass_2016H_Mini_Iso -s 0  -n 2000000
 
-./sel data Charmonium cutopt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/BsToPhiMuMu_Charmonium_2018A_Data.root BsToPhiMuMu_Charmonium_2018A_Data -s 0  -n 2000000
-./sel data Charmonium cutopt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/BsToPhiMuMu_Charmonium_2018B_Data.root BsToPhiMuMu_Charmonium_2018B_Data -s 0  -n 2000000
-./sel data Charmonium cutopt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/BsToPhiMuMu_Charmonium_2018C_Data.root BsToPhiMuMu_Charmonium_2018C_Data -s 0  -n 2000000
+#./sel data Charmonium cutopt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/BsToPhiMuMu_Charmonium_2018A_Data.root BsToPhiMuMu_Charmonium_2018A_Data -s 0  -n 2000000
+#./sel data Charmonium cutopt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/BsToPhiMuMu_Charmonium_2018B_Data.root BsToPhiMuMu_Charmonium_2018B_Data -s 0  -n 2000000
+#./sel data Charmonium cutopt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/BsToPhiMuMu_Charmonium_2018C_Data.root BsToPhiMuMu_Charmonium_2018C_Data -s 0  -n 2000000
 ./sel data Charmonium cutopt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/BsToPhiMuMu_Charmonium_2018D_Data.root BsToPhiMuMu_Charmonium_2018D_Data -s 0  -n 2000000
 #./sel data Charmonium cut_bdt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/Charmonium_2016F_MINI_Correction_Iso.root Charmonium_2016F_Mini_Iso -s 0  -n 2000000
 #./sel data Charmonium cut_bdt root://cmseos.fnal.gov//eos/uscms/store/user/ckar/crab_processed/Charmonium_2016G_MINI_Correction_Iso.root Charmonium_2016G_Mini_Iso -s 0  -n 2000000

@@ -95,6 +95,8 @@ double cosphimup = 0;
 double cosphimum = 0;
 double pmum_mass = 0;
 double pmup_mass = 0;
+double cosbdimuon = 0;
+double cosbphi = 0 ;
 
 
 double Bmass           = 0;
@@ -261,6 +263,8 @@ void ClearEvent()
   cosphimum = 0;
   pmum_mass = 0;
   pmup_mass = 0;
+  cosbdimuon = 0;
+  cosbphi = 0;
 
   Mumdcasigbs      = 0;
   Mupdcasigbs      = 0;
@@ -561,6 +565,8 @@ void SingleBsToPhiMuMuSelector::SlaveBegin(TTree * /*tree*/)
   tree_->Branch("cosphimum", &cosphimum, "cosphimum/D");
   tree_->Branch("pmum_mass", &pmum_mass, "pmum_mass/D");
   tree_->Branch("pmup_mass", &pmup_mass, "pmup_mass/D");
+  tree_->Branch("cosbdimuon", &cosbdimuon, "cosbdimuon/D");
+  tree_->Branch("cosbphi", &cosbphi, "cosbphi/D");
   
   tree_->Branch("CosThetaL"     , &CosThetaL     , "CosThetaL/D");
   tree_->Branch("CosThetaK"     , &CosThetaK     , "CosThetaK/D");
@@ -1218,6 +1224,9 @@ void SingleBsToPhiMuMuSelector::SaveEvent(int i, string spec)
 
   dimupt  = buff2.Pt();
   dimueta = buff2.Eta();
+  cosbdimuon = (B_4vec.Vect().Dot(buff2.Vect()))/(B_4vec.Vect().Mag()*buff2.Vect().Mag());
+  cosbphi = (B_4vec.Vect().Dot(Phi_4vec.Vect()))/(B_4vec.Vect().Mag()*Phi_4vec.Vect().Mag());
+  
 
   buff1.Boost(-buff2.X()/buff2.T(),-buff2.Y()/buff2.T(),-buff2.Z()/buff2.T());
 

@@ -85,6 +85,18 @@ double Mumphi           = 0;
 double Mupphi           = 0;
 double Mumdcasigbs  = 0;
 double Mupdcasigbs  = 0;
+double dimuvtxcl    = 0;
+double dimulsig     = 0;
+double dimucosalphabs = 0;
+double dimulensig = 0;
+double dimuDCA = 0;
+double cosdimuon = 0;
+double cosphimup = 0;
+double cosphimum = 0;
+double pmum_mass = 0;
+double pmup_mass = 0;
+double cosbdimuon = 0;
+double cosbphi = 0 ;
 
 
 double Bmass           = 0;
@@ -241,6 +253,18 @@ void ClearEvent()
   Mupeta           = 0;
   Mumphi           = 0;
   Mupphi           = 0;
+  dimuvtxcl        = 0;
+  dimulsig         = 0;
+  dimucosalphabs   = 0;
+  dimulensig = 0;
+  dimuDCA =0;
+  cosdimuon = 0;
+  cosphimup = 0;
+  cosphimum = 0;
+  pmum_mass = 0;
+  pmup_mass = 0;
+  cosbdimuon = 0;
+  cosbphi = 0;
 
   Mumdcasigbs      = 0;
   Mupdcasigbs      = 0;
@@ -531,6 +555,19 @@ void SingleBsToPhiMuMuSelector::SlaveBegin(TTree * /*tree*/)
   tree_->Branch("Q2"            , &Q2            , "Q2/D");
   tree_->Branch("dimupt"        , &dimupt        , "dimupt/D");
   tree_->Branch("dimueta"       , &dimueta       , "dimueta/D");
+  tree_->Branch("dimuvtxcl"     , &dimuvtxcl     , "dimuvtxcl/D" );
+  tree_->Branch("dimulsig"      , &dimulsig      , "dimulsig/D");
+  tree_->Branch("dimucosalphabs", &dimucosalphabs, "dimucosalphabs/D");
+  tree_->Branch("dimulensig", &dimulensig, "dimulensig/D");
+  tree_->Branch("dimuDCA", &dimuDCA, "dimuDCA/D");
+  tree_->Branch("cosdimuon", &cosdimuon, "cosdimuon/D");
+  tree_->Branch("cosphimup", &cosphimup, "cosphimup/D");
+  tree_->Branch("cosphimum", &cosphimum, "cosphimum/D");
+  tree_->Branch("pmum_mass", &pmum_mass, "pmum_mass/D");
+  tree_->Branch("pmup_mass", &pmup_mass, "pmup_mass/D");
+  tree_->Branch("cosbdimuon", &cosbdimuon, "cosbdimuon/D");
+  tree_->Branch("cosbphi", &cosbphi, "cosbphi/D");
+  
   tree_->Branch("CosThetaL"     , &CosThetaL     , "CosThetaL/D");
   tree_->Branch("CosThetaK"     , &CosThetaK     , "CosThetaK/D");
   tree_->Branch("Phi"           , &Phi           , "Phi/D");
@@ -1170,12 +1207,26 @@ void SingleBsToPhiMuMuSelector::SaveEvent(int i, string spec)
   Mupdcasigbs = fabs( mupdcabs->at(i)/mupdcabserr->at(i) ); 
   Bsdcasigbs  = fabs( bdcabs->at(i)/bdcabserr->at(i) );
   Q2 = pow(mumumass->at(i),2);
+  dimuvtxcl = mumuvtxcl->at(i);
+  dimulsig  = (mumulsbs->at(i))/(mumulsbserr->at(i));
+  dimucosalphabs = mumucosalphabs->at(i);
+  dimulensig = (mumulsbs->at(i))/(mumulsbserr->at(i));
+  dimuDCA = mumudca->at(i);
+
+  cosdimuon = (Mup_4vec.Vect().Dot(Mum_4vec.Vect()))/(Mup_4vec.Vect().Mag()*Mum_4vec.Vect().Mag());
+  cosphimup = (Phi_4vec.Vect().Dot(Mup_4vec.Vect()))/(Phi_4vec.Vect().Mag()*Mup_4vec.Vect().Mag());
+  cosphimum = (Phi_4vec.Vect().Dot(Mum_4vec.Vect()))/(Phi_4vec.Vect().Mag()*Mum_4vec.Vect().Mag());
+  pmum_mass = (Phi_4vec+Mum_4vec).M();
+  pmup_mass = (Phi_4vec+Mup_4vec).M();
 
   buff1 = B_4vec;
   buff2 = Mup_4vec+Mum_4vec;
 
   dimupt  = buff2.Pt();
   dimueta = buff2.Eta();
+  cosbdimuon = (B_4vec.Vect().Dot(buff2.Vect()))/(B_4vec.Vect().Mag()*buff2.Vect().Mag());
+  cosbphi = (B_4vec.Vect().Dot(Phi_4vec.Vect()))/(B_4vec.Vect().Mag()*Phi_4vec.Vect().Mag());
+  
 
   buff1.Boost(-buff2.X()/buff2.T(),-buff2.Y()/buff2.T(),-buff2.Z()/buff2.T());
 

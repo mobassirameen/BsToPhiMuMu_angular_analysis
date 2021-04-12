@@ -17,7 +17,7 @@ $ mkdir Run2_analysis
 
 $ cd Run2_analysis/
 
-$ git clone https://gitlab.cern.ch/rraturi/bstophimumu_angular_analysis.git
+$ git clone git@github.com:rishabh-raturi/BsToPhiMuMu_angular_analysis.git
 
 $ scram b -j8
 
